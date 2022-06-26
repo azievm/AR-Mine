@@ -12,6 +12,7 @@ public class ProgrammManager : MonoBehaviour
     private ARRaycastManager ARRaycastManagerScript;
     
     private bool isClick = false;
+    private bool isButtonClick = false;
 
     public Transform parent;
 
@@ -46,6 +47,7 @@ public class ProgrammManager : MonoBehaviour
     }
 
     public void ToPutButton(){
+        isButtonClick = true;
         isClick = true;
         ToPutButtonObject.SetActive(false);
         TextHelp.SetActive(false);
@@ -64,7 +66,7 @@ public class ProgrammManager : MonoBehaviour
             ObjectPrefab.SetActive(true);
         }
        	
-        if (Input.touchCount > 0 && Input.touches[0].phase == TouchPhase.Began)
+        if ((isButtonClick == true) &&(Input.touchCount > 0 && Input.touches[0].phase == TouchPhase.Began))
         {
         	isClick = true;
         }
